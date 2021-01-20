@@ -71,6 +71,9 @@ func searchHandler(newsapi *news.Client) http.HandlerFunc {
 			TotalPages: int(math.Ceil(float64(results.TotalResults) / float64(newsapi.PageSize))),
 			Results:    results,
 		}
+		if ok := !search.IsLastPage(); ok {
+			search.NextPage++
+		}
 
 		buf := &bytes.Buffer{}
 		err = tpl.Execute(buf, search)
@@ -81,6 +84,22 @@ func searchHandler(newsapi *news.Client) http.HandlerFunc {
 
 		buf.WriteTo(w)
 	}
+}
+
+func (s *Search) IsLastPage() bool {
+	return s.NextPage >= s.TotalPages
+}
+
+func (s *Search) PreviousPage() int {
+	return s.CurrentPage() - 1
+}
+
+func (s *Search) CurrentPage() int {
+	if s.NextPage == 1 {
+		return s.NextPage
+	}
+
+	return s.NextPage - 1
 }
 
 func main() {
