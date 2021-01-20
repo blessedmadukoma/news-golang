@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>News Searcher</title>
-    <link rel="stylesheet" href="/templates/assets/style.css?v=2" />
+    <link rel="stylesheet" href="/templates/assets/style.css" />
   </head>
   <body>
 
@@ -14,10 +14,10 @@
       <header>
         <a class="logo" href="/">Search News</a>
         <form action="/search" method="GET">
-          <input autofocus class="search-input" value="{{.Query}}" placeholder="Enter a news topic" type="search" name="q"
+          <input autofocus class="search-input" value="{{.Query}}" placeholder="Enter a news topic" type="search" style="color: rgb(255, 255, 255);" name="q"
           />
         </form>
-        <a href="https://github.com/blessedmadukoma/news-golang" class="button github-button">GitHub</a>
+        <a href="https://github.com/blessedmadukoma/news-golang" class="button github-button" style="color: aliceblue;">GitHub</a>
       </header>
 
       <section class="container">
