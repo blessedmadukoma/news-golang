@@ -118,7 +118,7 @@ func main() {
 		log.Fatal("Env: apiKey must be set")
 	}
 
-	myClient := &http.Client{Timeout: 10 * time.Second}
+	myClient := &http.Client{Timeout: 20 * time.Second}
 	newsapi = news.NewClient(myClient, apiKey, 20)
 
 	fs := http.FileServer(http.Dir("templates/assets"))
