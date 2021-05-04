@@ -127,6 +127,6 @@ func main() {
 	mux.Handle("/templates/assets/", http.StripPrefix("/templates/assets/", fs))
 	mux.HandleFunc("/", indexHandler)
 	mux.HandleFunc("/search", searchHandler(newsapi))
-	fmt.Println("Server starting!!!")
+	fmt.Printf("Server starting on port %s!!!\n", port)
 	http.ListenAndServe(":"+port, mux)
 }
